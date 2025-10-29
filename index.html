@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InternLink - Launching Soon</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(160deg, #000000, #0a0a0a, #101820);
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 900px;
+      padding: 40px 20px;
+    }
+    img.logo {
+      width: 500px;
+      height: auto;
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    h1 span {
+      background: linear-gradient(90deg, #00bfff, #00e5ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.tagline {
+      font-size: 1.1rem;
+      color: #bbb;
+      margin-top: 10px;
+      margin-bottom: 40px;
+    }
+    .launching {
+      font-size: 2rem;
+      color: transparent;
+      background: linear-gradient(90deg, #00e5ff, #00bfff);
+      -webkit-background-clip: text;
+      animation: glow 2s ease-in-out infinite alternate;
+      margin-bottom: 20px;
+    }
+    @keyframes glow {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 50px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .card h3 {
+      color: #00d4ff;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #ccc;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    .footer a {
+      color: #00d4ff;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Logo -->
+    <img src="logo.png" alt="InternLink Logo" class="logo" />
+
+    <!-- Title -->
+    <h1>Intern<span >Link</span></h1>
+    <p class="tagline">Your Gateway to Growth</p>
+
+    <!-- Launching Soon -->
+    <h2 class="launching">🚀 Launching Soon</h2>
+    <p style="color:#999; max-width:600px; margin:0 auto 40px;">
+      We're working hard to bring you the best internship platform experience.
+    </p>
+
+    <!-- Info Cards -->
+    <div class="cards">
+      <div class="card">
+        <div class="icon"></div>
+        <h3>Founder</h3>
+        <p><strong><h2>Saiteja Reddy Karka</h2></strong><br>“Empowering students to reach their full potential.”</p>
+      </div>
+      <div class="card">
+        <div class="icon"></div>
+        <h3>Our Vision</h3>
+        <p>To be the most trusted platform connecting students with impactful internship opportunities.</p>
+      </div>
+      <div class="card">
+        <div class="icon"></div>
+        <h3>Our Mission</h3>
+        <p>Democratizing access to quality internships through verified opportunities and AI-powered tools.</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>For inquiries, contact us at <a href="mailto:info@internlink.in">info@internlink.in</a></p>
+      <p>© 2025 InternLink. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
