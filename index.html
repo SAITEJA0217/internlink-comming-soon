@@ -1,195 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>InternLink - Coming Soon</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      /* 🌈 GLOBAL STYLES */
-      body {
-        margin: 0;
-        font-family: "Poppins", sans-serif;
-        background: radial-gradient(circle at top left, #001f3f, #000000);
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        text-align: center;
-        overflow-x: hidden;
-      }
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>InternLink – Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin:0;font-family:"Poppins",sans-serif;
+    background:radial-gradient(circle at top left,#001f3f,#000);
+    color:#fff;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    min-height:100vh;text-align:center;overflow-x:hidden;
+  }
+  .container{max-width:1100px;padding:40px 20px;}
+  .logo{width:220px;margin-bottom:20px;animation:float 3s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  h1{font-size:3rem;font-weight:700;margin-bottom:0;}
+  h1 span{background:linear-gradient(90deg,#00d4ff,#00bfff);
+          -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .tagline{color:#b5b5b5;margin-top:8px;font-size:1.1rem;}
+  .launch{font-size:2rem;margin:30px 0;
+          background:linear-gradient(90deg,#00bfff,#00e5ff);
+          -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+          animation:glow 2s ease-in-out infinite alternate;}
+  @keyframes glow{from{opacity:.6;}to{opacity:1;}}
+  .countdown{display:flex;justify-content:center;gap:15px;margin-bottom:40px;}
+  .count-box{background:rgba(255,255,255,.1);padding:15px 25px;border-radius:10px;backdrop-filter:blur(10px);}
+  .count-box span{display:block;font-size:1.8rem;font-weight:600;color:#00e5ff;}
+  .count-box small{color:#b5b5b5;font-size:.8rem;}
+  .offer{background:rgba(255,255,255,.1);padding:30px;border-radius:16px;backdrop-filter:blur(12px);margin-bottom:40px;}
+  .offer h2{color:#00e5ff;font-size:1.8rem;margin-bottom:10px;}
+  .price-card{background:#fff;color:#000;padding:20px 30px;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.2);margin:20px auto;width:fit-content;}
+  .price-card .price{font-size:2rem;color:#00a86b;font-weight:700;}
+  .price-card .old{text-decoration:line-through;color:#666;font-size:.9rem;}
+  .glow-button{background:linear-gradient(90deg,#00e5ff,#00bfff);border:none;padding:12px 26px;border-radius:8px;font-weight:600;font-size:1rem;color:#000;cursor:pointer;
+               box-shadow:0 0 15px rgba(0,229,255,.6);transition:.3s;animation:pulse 2s infinite;}
+  .glow-button:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(0,229,255,.9);}
+  @keyframes pulse{0%{box-shadow:0 0 8px rgba(0,229,255,.4),0 0 15px rgba(0,191,255,.3);}
+                   50%{box-shadow:0 0 25px rgba(0,229,255,.8),0 0 35px rgba(0,191,255,.6);}
+                   100%{box-shadow:0 0 8px rgba(0,229,255,.4),0 0 15px rgba(0,191,255,.3);}}
+  .info-banner{
+    background:rgba(255,255,255,0.1);padding:15px 25px;border-radius:10px;
+    margin-top:20px;color:#ccc;font-size:1rem;max-width:650px;margin-inline:auto;
+    backdrop-filter:blur(8px);border:1px solid rgba(0,229,255,0.2);
+  }
+  .info-banner.live{color:#00e5ff;border-color:#00e5ff;box-shadow:0 0 10px rgba(0,229,255,0.5);}
+  .early-countdown{
+    margin-top:10px;font-size:1.1rem;color:#00e5ff;font-weight:600;
+    letter-spacing:1px;
+  }
+  .founder-box{
+    margin-top:80px;background:rgba(255,255,255,0.1);
+    border:2px solid rgba(0,229,255,0.3);border-radius:25px;
+    padding:40px;max-width:700px;margin-inline:auto;
+    box-shadow:0 0 25px rgba(0,229,255,0.3);
+  }
+  .founder-photo{width:180px;height:180px;border-radius:50%;border:4px solid #00e5ff;object-fit:cover;
+    box-shadow:0 0 25px rgba(0,229,255,0.7);margin-bottom:20px;}
+  .founder-name{font-size:1.5rem;font-weight:700;color:#00e5ff;margin:10px 0;}
+  .founder-quote{color:#ccc;font-style:italic;max-width:600px;margin:auto;font-size:1.05rem;line-height:1.6;}
+  footer{margin-top:80px;font-size:.9rem;color:#aaa;}
+  footer a{color:#00d4ff;text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="container">
+  <img src="logo.png" alt="InternLink Logo" class="logo" />
+  <h1>Intern<span>Link</span></h1>
+  <p class="tagline">Your Gateway to Growth</p>
+  <h2 class="launch">🚀 Launching Soon</h2>
 
-      .container {
-        max-width: 1000px;
-        padding: 40px 20px;
-      }
+  <!-- Main Launch Countdown -->
+  <div class="countdown" id="countdown">
+    <div class="count-box"><span id="days">00</span><small>Days</small></div>
+    <div class="count-box"><span id="hours">00</span><small>Hours</small></div>
+    <div class="count-box"><span id="minutes">00</span><small>Mins</small></div>
+    <div class="count-box"><span id="seconds">00</span><small>Secs</small></div>
+  </div>
 
-      /* 🌟 LOGO */
-      .logo {
-        width: 500px;
-        height: auto;
-        margin-bottom: 20px;
-        animation: float 3s ease-in-out infinite;
-      }
+  <!-- Offer Section -->
+  <div class="offer">
+    <h2>🎁 Early Bird Offer</h2>
+    <p>Be among the first <strong>50 members</strong> to get launch discounts!</p>
+    <div class="price-card"><h3>🎓 Students</h3><div class="price">₹49</div><div class="old">₹199</div></div>
 
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
-      }
-
-      /* 🧑‍💼 FOUNDER PHOTO */
-      .founder-photo {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        border: 3px solid #00d4ff;
-        margin: 10px 0 25px;
-        object-fit: cover;
-        box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-      }
-
-      /* 🚀 HEADING */
-      h1 {
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 0;
-      }
-
-      h1 span {
-        background: linear-gradient(90deg, #00d4ff, #00bfff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .tagline {
-        color: #b5b5b5;
-        margin-top: 8px;
-        font-size: 1.1rem;
-      }
-
-      .launch {
-        font-size: 2rem;
-        margin: 30px 0;
-        background: linear-gradient(90deg, #00bfff, #00e5ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: glow 2s ease-in-out infinite alternate;
-      }
-
-      @keyframes glow {
-        from { opacity: 0.6; }
-        to { opacity: 1; }
-      }
-
-      /* 🔹 INFO CARDS */
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 25px;
-        margin-top: 40px;
-      }
-
-      .card {
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        padding: 25px;
-        backdrop-filter: blur(12px);
-        transition: transform 0.3s ease, background 0.3s ease;
-      }
-
-      .card:hover {
-        transform: translateY(-5px);
-        background: rgba(255, 255, 255, 0.12);
-      }
-
-      .card h3 {
-        color: #00d4ff;
-        font-size: 1.3rem;
-        margin-bottom: 10px;
-      }
-
-      .card p {
-        color: #d3d3d3;
-        font-size: 0.95rem;
-        line-height: 1.5;
-      }
-
-      /* 🔸 FOOTER */
-      footer {
-        margin-top: 60px;
-        font-size: 0.9rem;
-        color: #aaa;
-      }
-
-      footer a {
-        color: #00d4ff;
-        text-decoration: none;
-      }
-
-      footer a:hover {
-        text-decoration: underline;
-      }
-
-      /* 📱 RESPONSIVE */
-      @media (max-width: 600px) {
-        h1 { font-size: 2.2rem; }
-        .tagline { font-size: 1rem; }
-        .launch { font-size: 1.4rem; }
-        .founder-photo { width: 120px; height: 120px; }
-        .logo { width: 180px; }
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="container">
-      <!-- 🌟 Logo -->
-      <img src="logo.png" alt="InternLink Logo" class="logo" />
-
-      <!-- 🧑 Founder Photo -->
-      
-
-      <!-- Title -->
-      <h1>Intern<span>Link</span></h1>
-      <p class="tagline">Your Gateway to Growth</p>
-
-      <!-- Launch Info -->
-      <h2 class="launch">🚀 Launching Soon</h2>
-      <p style="color:#bbb; max-width:600px; margin:0 auto 40px;">
-        We’re building a smarter way for students to find internships and grow their careers.
-      </p>
-
-      <!-- Info Cards -->
-     <center> <div class="cards">
-        <div class="card">
-          <h3>Founder</h3>
-          <img src="saiteja.jpg" alt="Saiteja Reddy Karka" class="founder-photo" />
-          <p><strong>Saiteja Reddy Karka</strong><br>Empowering students to reach their full potential through innovation.</p>
-        </div></center>
-        <br>
-        <div class="card">
-          <h3>Our Vision</h3>
-          <p>To be India’s most trusted and intelligent internship discovery platform.
-            
-          </p>
-        </div>
-        <br>
-        <div class="card">
-          <h3>Our Mission</h3>
-          <p>Connecting passionate learners with verified opportunities powered by AI-driven matching.</p>
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <footer>
-        <p>For inquiries, contact us at <a href="mailto:info@internlink.in">info@internlink.in</a></p>
-        <p>© 2025 InternLink. All rights reserved.</p>
-      </footer>
+    <div id="info-banner" class="info-banner">
+      <div id="info-text">🗓️ Early Access opens <strong>Dec 6</strong> → closes <strong>Dec 10</strong><br>
+      🚀 Official Launch: <strong>Dec 11, 2025 (12:00 PM )</strong></div>
+      <div id="early-countdown" class="early-countdown"></div>
     </div>
-  </body>
+<br>
+    <div class="signup-form fade" id="signup-form">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWWXdejcOgJiUcVeHinIevx8EDiAK3yRYzYHn-e4_w9iyOGw/viewform?usp=publish-editor" target="_blank">
+        <button type="button" class="glow-button">Join Early Access</button>
+      </a>
+    </div>
+
+    <p>⚡ Hurry — Offer ends on launch day!</p>
+
+    <div class="live-cta" id="live-cta" style="display:none;">
+      <strong id="live-text" style="color:#fff;font-size:1.1rem;"></strong>
+      <a id="visit-btn" class="glow-button" href="https://internlink.in" target="_blank">Visit InternLink</a>
+    </div>
+  </div>
+
+  <!-- Founder Box -->
+  <div class="founder-box">
+    <img src="saiteja.jpg" alt="Saiteja Reddy Karka" class="founder-photo" />
+    <div class="founder-name">Saiteja Reddy Karka</div>
+    <div class="founder-quote">“Building InternLink to empower students to gain real-world experience, confidence, and connections that shape their future careers.”</div>
+  </div>
+
+  <footer>
+    <p>Contact us at <a href="mailto:info@internlink.in">info@internlink.in</a></p>
+    <p>© 2025 InternLink. All rights reserved.</p>
+  </footer>
+</div>
+
+<!-- Confetti Script -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<script>
+const launchDate = new Date("Dec 11 2025 12:00:00").getTime();
+const earlyStart = new Date("Dec 6 2025 00:00:00").getTime();
+const earlyEnd = new Date("Dec 10 2025 23:59:59").getTime();
+
+let earlyConfettiShown = false;
+let launchConfettiShown = false;
+
+function fireConfetti() {
+  for (let i = 0; i < 3; i++) {
+    setTimeout(() => {
+      confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
+    }, i * 500);
+  }
+}
+
+function updateEarlyCountdown(){
+  const now = Date.now();
+  const countdown = document.getElementById("early-countdown");
+  const info = document.getElementById("info-banner");
+  const form = document.getElementById("signup-form");
+
+  if(now < earlyStart){
+    const diff = earlyStart - now;
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const s = Math.floor((diff % (1000*60)) / 1000);
+    countdown.innerHTML = `⏳ Opens in <strong>${d}d : ${h}h : ${m}m : ${s}s</strong>`;
+    info.classList.remove("live");
+    form.classList.remove("show");
+  } else if(now >= earlyStart && now <= earlyEnd){
+    countdown.innerHTML = "✅ Early Access is <strong>LIVE!</strong> (Until Dec 10)";
+    info.classList.add("live");
+    form.classList.add("show");
+    if(!earlyConfettiShown){
+      fireConfetti();
+      earlyConfettiShown = true;
+    }
+  } else {
+    countdown.innerHTML = "❌ Early Access Closed";
+    info.classList.remove("live");
+    form.classList.remove("show");
+  }
+}
+
+setInterval(updateEarlyCountdown, 1000);
+updateEarlyCountdown();
+
+function startLaunchCountdown(){
+  const timer = setInterval(()=>{
+    const now = Date.now(), diff = launchDate - now;
+    if(diff <= 0){
+      clearInterval(timer);
+      document.getElementById("countdown").innerHTML = "<p style='font-size:1.6rem'>🎉 We're Live!</p>";
+      document.getElementById("live-cta").style.display = "flex";
+      document.getElementById("live-text").innerText = "InternLink is now live — welcome!";
+      if(!launchConfettiShown){
+        fireConfetti();
+        launchConfettiShown = true;
+      }
+      return;
+    }
+    const d=Math.floor(diff/(1000*60*60*24));
+    const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const m=Math.floor((diff%(1000*60*60))/(1000*60));
+    const s=Math.floor((diff%(1000*60))/1000);
+    document.getElementById("days").innerText=d.toString().padStart(2,"0");
+    document.getElementById("hours").innerText=h.toString().padStart(2,"0");
+    document.getElementById("minutes").innerText=m.toString().padStart(2,"0");
+    document.getElementById("seconds").innerText=s.toString().padStart(2,"0");
+  },1000);
+}
+startLaunchCountdown();
+</script>
+</body>
 </html>
