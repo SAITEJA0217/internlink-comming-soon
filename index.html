@@ -88,12 +88,13 @@
 
     <div id="info-banner" class="info-banner">
       <div id="info-text">🗓️ Early Access opens <strong>Dec 6</strong> → closes <strong>Dec 10</strong><br>
-      🚀 Official Launch: <strong>Dec 11, 2025 (12:00 PM )</strong></div>
+      🚀 Official Launch: <strong>Dec 11, 2025 (12:00 PM)</strong></div>
       <div id="early-countdown" class="early-countdown"></div>
     </div>
-<br>
+
+    <br>
     <div class="signup-form fade" id="signup-form">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWWXdejcOgJiUcVeHinIevx8EDiAK3yRYzYHn-e4_w9iyOGw/viewform?usp=publish-editor" target="_blank">
+      <a id="early-access-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeWWXdejcOgJiUcVeHinIevx8EDiAK3yRYzYHn-e4_w9iyOGw/viewform?usp=publish-editor" target="_blank">
         <button type="button" class="glow-button">Join Early Access</button>
       </a>
     </div>
@@ -132,20 +133,27 @@ let launchConfettiShown = false;
 function fireConfetti() {
   for (let i = 0; i < 3; i++) {
     setTimeout(() => {
-      confetti({
-        particleCount: 150,
-        spread: 80,
-        origin: { y: 0.6 }
-      });
+      confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
     }, i * 500);
   }
 }
+
+const earlyBtn = document.getElementById("early-access-btn");
+earlyBtn.addEventListener("click", (e) => {
+  const now = Date.now();
+  if (now < earlyStart) {
+    e.preventDefault();
+    alert("⏳ You can fill the Early Access form from December 6, 2025.");
+  } else if (now > earlyEnd) {
+    e.preventDefault();
+    alert("❌ Early Access is closed. Stay tuned for the launch on December 11!");
+  }
+});
 
 function updateEarlyCountdown(){
   const now = Date.now();
   const countdown = document.getElementById("early-countdown");
   const info = document.getElementById("info-banner");
-  const form = document.getElementById("signup-form");
 
   if(now < earlyStart){
     const diff = earlyStart - now;
@@ -155,11 +163,9 @@ function updateEarlyCountdown(){
     const s = Math.floor((diff % (1000*60)) / 1000);
     countdown.innerHTML = `⏳ Opens in <strong>${d}d : ${h}h : ${m}m : ${s}s</strong>`;
     info.classList.remove("live");
-    form.classList.remove("show");
   } else if(now >= earlyStart && now <= earlyEnd){
     countdown.innerHTML = "✅ Early Access is <strong>LIVE!</strong> (Until Dec 10)";
     info.classList.add("live");
-    form.classList.add("show");
     if(!earlyConfettiShown){
       fireConfetti();
       earlyConfettiShown = true;
@@ -167,7 +173,6 @@ function updateEarlyCountdown(){
   } else {
     countdown.innerHTML = "❌ Early Access Closed";
     info.classList.remove("live");
-    form.classList.remove("show");
   }
 }
 
