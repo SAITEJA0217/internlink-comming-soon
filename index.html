@@ -14,15 +14,15 @@
     min-height:100vh;text-align:center;overflow-x:hidden;
   }
   .container{max-width:1100px;padding:40px 20px;}
-  .logo{width:220px;margin-bottom:20px;animation:float 3s ease-in-out infinite;}
+  .logo{width:300px;margin-bottom:20px;animation:float 3s ease-in-out infinite;}
   @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
   h1{font-size:3rem;font-weight:700;margin-bottom:0;}
-  h1 span{background:linear-gradient(90deg,#00d4ff,#00bfff);
-          -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  h1 span{background:linear-gradient(90deg,#fff199,#f4ed8b);
+          background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
   .tagline{color:#b5b5b5;margin-top:8px;font-size:1.1rem;}
   .launch{font-size:2rem;margin:30px 0;
           background:linear-gradient(90deg,#00bfff,#00e5ff);
-          -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+          background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
           animation:glow 2s ease-in-out infinite alternate;}
   @keyframes glow{from{opacity:.6;}to{opacity:1;}}
   .countdown{display:flex;justify-content:center;gap:15px;margin-bottom:40px;}
@@ -84,7 +84,7 @@
   <div class="offer">
     <h2>🎁 Early Bird Offer</h2>
     <p>Be among the first <strong>50 members</strong> to get launch discounts!</p>
-    <div class="price-card"><h3>🎓 Students</h3><div class="price">₹49</div><div class="old">₹199</div></div>
+    <div class="price-card"><h3>🎓 Students</h3><div class="price">₹99</div><div class="old">₹199</div></div>
 
     <div id="info-banner" class="info-banner">
       <div id="info-text">🗓️ Early Access opens <strong>Dec 6</strong> → closes <strong>Dec 10</strong><br>
@@ -101,7 +101,7 @@
 
     <p>⚡ Hurry — Offer ends on launch day!</p>
 
-    <div class="live-cta" id="live-cta" style="display:none;">
+    <div class="live-cta" id="live-cta" style="display:none;flex-direction:column;align-items:center;gap:15px;">
       <strong id="live-text" style="color:#fff;font-size:1.1rem;"></strong>
       <a id="visit-btn" class="glow-button" href="https://internlink.in" target="_blank">Visit InternLink</a>
     </div>
