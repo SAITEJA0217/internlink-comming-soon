@@ -277,7 +277,7 @@
     <Br>
     <div class="signup-form fade" id="signup-form">
       <br>
-    <a id="early-access-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeWWXdejcOgJiUcVeHinIevx8EDiAK3yRYzYHn-e4_w9iyOGw/viewform?usp=publish-editor" target="_blank">
+    <a id="early-access-btn" href="https://forms.gle/kR5zNpcdbVp7v9dB7" target="_blank">
       <button type="button" class="glow-button">Join Early Access</button>
     </a>
   </div>
@@ -295,14 +295,19 @@
 
   <!-- Founder Box -->
   <div class="founder-box">
-    <img src="saiteja.jpg" alt="Saiteja Reddy Karka" class="founder-photo" />
-    <h3>Founder & CEO</h3>
-    <div class="founder-name">Saiteja Reddy Karka</div>
-    <div class="founder-quote">“Building InternLink to empower students to gain real-world experience, confidence, and connections that shape their future careers.”</div>
+  <img src="saiteja.jpg" alt="Saiteja Reddy Karka" class="founder-photo"/>
+
+  <div class="text">
+    <h3 class="founder-name">Saiteja Reddy Karka</h3>
+    <span class="title">Founder & CEO</span>
+    <span class="subtitle">InternLink</span>
   </div>
+</div>
+
+
 
   <footer>
-    <p>Contact us at <a href="mailto:info@internlink.in">info@internlink.in</a></p>
+    <p>Contact us at: <a href="mailto:info@internlink.in"> info@internlink.in</a></p>
     <p>© 2025 InternLink. All rights reserved.</p>
   </footer>
 </div>
@@ -311,7 +316,7 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 <script>
 const launchDate = new Date("Dec 17 2025 12:00:00").getTime();
-const earlyStart = new Date("Dec 11 2025 00:00:00").getTime();
+const earlyStart = new Date("Dec 11 2025 12:00:00").getTime();
 const earlyEnd = new Date("Dec 12 2025 23:59:59").getTime();
 
 let earlyConfettiShown = false;
@@ -330,10 +335,10 @@ earlyBtn.addEventListener("click", (e) => {
   const now = Date.now();
   if (now < earlyStart) {
     e.preventDefault();
-    alert("⏳ You can fill the Early Access form from December 6, 2025.");
+    alert("⏳ You can fill the Early Access form from December 11, 2025.");
   } else if (now > earlyEnd) {
     e.preventDefault();
-    alert("❌ Early Access is closed. Stay tuned for the launch on December 11!");
+    alert("❌ Early Access is closed. Stay tuned for the launch on December 17!");
   }
 });
 
@@ -351,7 +356,7 @@ function updateEarlyCountdown(){
     countdown.innerHTML = `⏳ Opens in <strong>${d}d : ${h}h : ${m}m : ${s}s</strong>`;
     info.classList.remove("live");
   } else if(now >= earlyStart && now <= earlyEnd){
-    countdown.innerHTML = "✅ Early Access is <strong>LIVE!</strong> (Until Dec 10)";
+    countdown.innerHTML = "✅ Early Access is <strong>LIVE!</strong> (Until Dec 12)";
     info.classList.add("live");
     if(!earlyConfettiShown){
       fireConfetti();
