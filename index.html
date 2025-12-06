@@ -281,7 +281,7 @@
       <button type="button" class="glow-button">Join Early Access</button>
     </a>
   </div>
-  <p>Early Access : DEC 11 </p>
+  <p>Early Access : DEC 15 </p>
 
     <div id="early-countdown" class="early-countdown"></div>
   </div>
@@ -316,8 +316,8 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 <script>
 const launchDate = new Date("Dec 17 2025 12:00:00").getTime();
-const earlyStart = new Date("Dec 11 2025 12:00:00").getTime();
-const earlyEnd = new Date("Dec 12 2025 23:59:59").getTime();
+const earlyStart = new Date("Dec 15 2025 12:00:00").getTime();
+const earlyEnd = new Date("Dec 15 2025 23:59:59").getTime();
 
 let earlyConfettiShown = false;
 let launchConfettiShown = false;
@@ -335,7 +335,7 @@ earlyBtn.addEventListener("click", (e) => {
   const now = Date.now();
   if (now < earlyStart) {
     e.preventDefault();
-    alert("⏳ You can fill the Early Access form from December 11, 2025.");
+    alert("⏳ You can fill the Early Access form from December 15, 2025.");
   } else if (now > earlyEnd) {
     e.preventDefault();
     alert("❌ Early Access is closed. Stay tuned for the launch on December 17!");
