@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://internlink.in/</loc>
+    <lastmod>2025-12-24</lastmod>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://internlink.in/internships</loc>
+    <lastmod>2025-12-24</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://internlink.in/ai-internship</loc>
+    <lastmod>2025-12-24</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://internlink.in/data-science-internship</loc>
+    <lastmod>2025-12-24</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://internlink.in/web-development-internship</loc>
+    <lastmod>2025-12-24</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://internlink.in/digital-marketing-internship</loc>
+    <lastmod>2025-12-24</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://internlink.in/about</loc>
+    <lastmod>2025-12-24</lastmod>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://internlink.in/contact</loc>
+    <lastmod>2025-12-24</lastmod>
+    <priority>0.60</priority>
+  </url>
+
+</urlset>
