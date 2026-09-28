@@ -1,0 +1,991 @@
+/* ==========================================================================
+   INTERNLINK — "TOUCH THE FUTURE" (FINAL INTERACTION PASS)
+   Aesthetic: Typographic Constellation, Cursor Spotlight Discovery, Hold Easter Egg
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & Core Variables
+   -------------------------------------------------------------------------- */
+:root {
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Space Grotesk', ui-monospace, SFMono-Regular, monospace;
+
+  /* Palette */
+  --bg-obsidian: #050608;
+  
+  --text-pure: #ffffff;
+  --text-headline: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --text-muted: rgba(255, 255, 255, 0.4);
+
+  /* Accents */
+  --accent-blue: #38bdf8;
+  --accent-blue-soft: rgba(56, 189, 248, 0.15);
+  --accent-emerald: #10b981;
+
+  /* Glass & Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.22);
+  --surface-glass: rgba(255, 255, 255, 0.032);
+  --surface-hover: rgba(255, 255, 255, 0.065);
+
+  /* Easing Curves */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & 100vh Single-Screen Lock
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--bg-obsidian);
+  color: var(--text-headline);
+  font-family: var(--font-main);
+  height: 100%;
+  overflow: hidden;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  height: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background-color: var(--bg-obsidian);
+  color: var(--text-headline);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.25);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   3. Calm Ambient Background Orbs (Decoupled Slow Drift)
+   -------------------------------------------------------------------------- */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(14, 30, 60, 0.85) 0%, rgba(3, 105, 161, 0.24) 45%, transparent 70%);
+  top: 15%;
+  left: 50%;
+  opacity: 0.42;
+  transform: translate(-50%, -20%);
+  animation: orbDrift1 22s ease-in-out infinite alternate;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(30, 41, 59, 0.75) 0%, rgba(56, 189, 248, 0.08) 50%, transparent 70%);
+  bottom: 8%;
+  right: 18%;
+  opacity: 0.32;
+  transform: translate(20%, 20%);
+  animation: orbDrift2 28s ease-in-out infinite alternate;
+}
+
+.orb-3 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(15, 23, 42, 0.9) 0%, rgba(14, 165, 233, 0.06) 50%, transparent 70%);
+  top: 40%;
+  left: 10%;
+  opacity: 0.28;
+  transform: translate(-20%, -10%);
+  animation: orbDrift3 34s ease-in-out infinite alternate;
+}
+
+@keyframes orbDrift1 {
+  0% { transform: translate(-50%, -20%) scale(1); }
+  100% { transform: translate(-54%, -24%) scale(0.96); }
+}
+
+@keyframes orbDrift2 {
+  0% { transform: translate(20%, 20%) scale(0.95); }
+  100% { transform: translate(25%, 12%) scale(0.98); }
+}
+
+@keyframes orbDrift3 {
+  0% { transform: translate(-20%, -10%) scale(1); }
+  100% { transform: translate(-10%, 5%) scale(1.06); }
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------------------------
+   4. Typographic Constellation (Cursor Spotlight Discovery System)
+   -------------------------------------------------------------------------- */
+.typographic-constellation {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.constellation-word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 1.25vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #ffffff;
+  opacity: 0.016;
+  filter: blur(2px);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity 0.5s var(--ease-smooth), filter 0.5s var(--ease-smooth), transform 0.5s var(--ease-cinematic), letter-spacing 0.5s var(--ease-cinematic), color 0.4s ease;
+  will-change: opacity, filter, transform, letter-spacing;
+}
+
+/* Specific Organic Positions Around Hero */
+.word-possibility { transform: translate(-50%, calc(-50% - 210px)); }
+.word-skills      { transform: translate(calc(-50% - 320px), calc(-50% - 80px)); }
+.word-growth      { transform: translate(calc(-50% + 320px), calc(-50% - 75px)); }
+.word-projects    { transform: translate(calc(-50% - 300px), calc(-50% + 120px)); }
+.word-opportunity { transform: translate(calc(-50% + 310px), calc(-50% + 125px)); }
+.word-connection  { transform: translate(-50%, calc(-50% + 225px)); }
+
+/* Active Spotlight Discovery Hover State */
+.constellation-word.spotlight-active {
+  opacity: 0.12 !important;
+  filter: blur(0) !important;
+  color: #f1f5f9;
+}
+
+.constellation-word.hover-focused {
+  opacity: 0.22 !important;
+  filter: blur(0) brightness(1.2) !important;
+  color: var(--accent-blue) !important;
+  letter-spacing: 0.28em !important;
+  text-shadow: 0 0 16px rgba(56, 189, 248, 0.5);
+}
+
+/* Mobile Tap Brief Reveal */
+.typographic-constellation.mobile-tapped .constellation-word {
+  opacity: 0.12;
+  filter: blur(0);
+}
+
+/* --------------------------------------------------------------------------
+   5. Background "NEXT" Typographic Layer (CTA Interaction)
+   -------------------------------------------------------------------------- */
+.bg-next-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.bg-next-text {
+  font-family: var(--font-main);
+  font-size: clamp(16vw, 22vw, 28vw);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #38bdf8;
+  opacity: 0;
+  transform: scale(1.05);
+  filter: blur(8px);
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 0.9;
+  white-space: nowrap;
+  will-change: transform, opacity, filter;
+}
+
+.bg-next-text.next-reveal {
+  animation: nextRevealRun 1.2s cubic-bezier(0.2, 1, 0.4, 1) forwards;
+}
+
+@keyframes nextRevealRun {
+  0%   { opacity: 0; transform: scale(1.05); filter: blur(8px); }
+  40%  { opacity: 0.028; transform: scale(1.0); filter: blur(0); }
+  75%  { opacity: 0.028; transform: scale(1.0); filter: blur(0); }
+  100% { opacity: 0; transform: scale(0.98); filter: blur(8px); }
+}
+
+/* CTA Signal Beam Vector */
+.cta-signal-beam {
+  position: fixed;
+  left: 50%;
+  bottom: 120px;
+  width: 1.5px;
+  height: 0;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.6) 0%, transparent 100%);
+  z-index: 15;
+  pointer-events: none;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.cta-signal-beam.beam-fire {
+  animation: signalBeamShoot 0.7s var(--ease-cinematic) forwards;
+}
+
+@keyframes signalBeamShoot {
+  0% { height: 0; opacity: 1; bottom: 120px; }
+  50% { height: 160px; opacity: 1; bottom: 180px; }
+  100% { height: 0; opacity: 0; bottom: 340px; }
+}
+
+/* --------------------------------------------------------------------------
+   6. Full-Viewport Scanning Light Beam
+   -------------------------------------------------------------------------- */
+.cinematic-scan-beam {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -120px;
+  height: 60px;
+  background: linear-gradient(180deg, transparent 0%, rgba(56, 189, 248, 0.08) 50%, rgba(255, 255, 255, 0.12) 80%, transparent 100%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 30;
+  opacity: 0;
+}
+
+.cinematic-scan-beam.run-beam {
+  animation: scanBeamMove 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes scanBeamMove {
+  0% { top: -80px; opacity: 0; }
+  15% { opacity: 0.9; }
+  85% { opacity: 0.9; }
+  100% { top: 110%; opacity: 0; }
+}
+
+.scan-target {
+  transition: filter 0.35s ease, opacity 0.5s ease;
+}
+
+.scan-target.beam-lit {
+  filter: brightness(1.08) contrast(1.02);
+}
+
+/* Cursor Light */
+.cursor-light {
+  position: fixed;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.035) 0%, rgba(14, 165, 233, 0.01) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-smooth);
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor-light { display: block; }
+}
+
+/* --------------------------------------------------------------------------
+   7. Single-Screen Shell & Header
+   -------------------------------------------------------------------------- */
+.page-shell {
+  position: relative;
+  z-index: 10;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(16px, 2.8vh, 32px) clamp(20px, 4vw, 56px);
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  opacity: 0;
+  filter: blur(12px);
+  transform: scale(0.96);
+  animation: logoCinemaReveal 0.7s var(--ease-cinematic) 0.2s forwards;
+}
+
+@keyframes logoCinemaReveal {
+  to { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+
+.brand-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  user-select: none;
+}
+
+.brand-logo {
+  height: 29px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  filter: invert(1) brightness(1.6) contrast(1.1);
+  opacity: 0.92;
+  display: block;
+}
+
+.brand-name {
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: #f8fafc;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.04);
+  border: 1px solid rgba(16, 185, 129, 0.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  user-select: none;
+}
+
+.pulse-dot {
+  position: relative;
+  display: inline-block;
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  background-color: var(--accent-emerald);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
+}
+
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent-emerald);
+  opacity: 0.8;
+  animation: subtlePulse 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes subtlePulse {
+  0% { transform: scale(0.7); opacity: 0.9; }
+  65% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.status-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #a7f3d0;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   8. Main Hero & Magnetic Characters
+   -------------------------------------------------------------------------- */
+.hero-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+  min-height: 0;
+}
+
+.hero-inner {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.5s var(--ease-smooth), opacity 0.5s var(--ease-smooth);
+  will-change: transform, opacity;
+}
+
+/* Subtle Hero Lift on CTA Click (-4px) */
+.hero-inner.hero-cta-lift {
+  transform: translateY(-4px) !important;
+}
+
+/* Mouse Velocity Micro-Displacement (0.3 - 0.5px) */
+.velocity-subtle {
+  transform: translateY(0.4px);
+}
+
+/* Eyebrow Bottom-to-Top Mask Reveal */
+.hero-eyebrow {
+  margin-bottom: clamp(10px, 1.8vh, 18px);
+  overflow: hidden;
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(40px);
+  animation: eyebrowReveal 0.8s var(--ease-cinematic) 0.5s forwards;
+}
+
+@keyframes eyebrowReveal {
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+.eyebrow-text {
+  font-family: var(--font-mono);
+  font-size: clamp(0.74rem, 1.05vw, 0.86rem);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  display: block;
+}
+
+/* Brand Sub-title */
+.hero-brand-title {
+  margin-bottom: clamp(6px, 1.2vh, 12px);
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(30px);
+  animation: brandReveal 0.8s var(--ease-cinematic) 0.85s forwards;
+}
+
+@keyframes brandReveal {
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+.hero-brand-title span {
+  font-family: var(--font-mono);
+  font-size: clamp(0.92rem, 1.45vw, 1.18rem);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: rgba(255, 255, 255, 0.48);
+  text-transform: uppercase;
+}
+
+/* Main Headline */
+.hero-headline {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-main);
+  font-size: clamp(2.6rem, 6vw, 4.9rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  margin-bottom: clamp(14px, 2.2vh, 22px);
+  user-select: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.28em;
+}
+
+.headline-part {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+/* Individual Magnetic Characters */
+.char-span {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(50px) scale(1.04);
+  background: linear-gradient(180deg, #ffffff 20%, #e2e8f0 70%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: charAssemble 0.85s var(--ease-cinematic) calc(1.05s + (var(--i) * 0.04s)) forwards;
+  transition: transform 0.25s var(--ease-cinematic), filter 0.25s ease;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes charAssemble {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Supporting Copy */
+.hero-supporting-copy {
+  font-size: clamp(1.05rem, 1.55vw, 1.28rem);
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+  letter-spacing: -0.01em;
+}
+
+.support-line-wrap {
+  overflow: hidden;
+  display: block;
+}
+
+.support-line {
+  display: block;
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(20px);
+  will-change: transform, opacity, filter;
+}
+
+.line-1 { animation: lineReveal 0.8s var(--ease-cinematic) 1.9s forwards; }
+.line-2 { animation: lineReveal 0.8s var(--ease-cinematic) 2.02s forwards; }
+
+@keyframes lineReveal {
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   9. Kinetic Status & Dissolve Particle Canvas
+   -------------------------------------------------------------------------- */
+.kinetic-status-container {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: clamp(14px, 2.2vh, 22px) 0 clamp(8px, 1.4vh, 16px);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: genericFadeIn 0.8s var(--ease-cinematic) 2.3s forwards;
+}
+
+.status-viewport {
+  position: relative;
+  height: 28px;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+}
+
+.status-particle-canvas {
+  position: absolute;
+  inset: -10px -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 20px);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.kinetic-status-text {
+  font-family: var(--font-mono);
+  font-size: clamp(0.88rem, 1.25vw, 1.02rem);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #ffffff;
+  text-transform: uppercase;
+  display: inline-block;
+  will-change: transform, opacity, filter, letter-spacing, color;
+  transition: transform 0.45s var(--ease-cinematic), opacity 0.45s var(--ease-cinematic), filter 0.45s var(--ease-cinematic), letter-spacing 0.45s var(--ease-cinematic), color 0.4s ease;
+}
+
+.kinetic-status-text.dissolve-exit {
+  letter-spacing: 0.3em;
+  opacity: 0;
+  transform: translateY(-20px);
+  filter: blur(4px);
+}
+
+.kinetic-status-text.dissolve-enter {
+  letter-spacing: 0.3em;
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(4px);
+}
+
+.kinetic-status-text.status-blue-shift {
+  color: var(--accent-blue);
+  text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+
+/* Secondary Line */
+.hero-secondary-line {
+  font-family: var(--font-main);
+  font-size: clamp(0.92rem, 1.2vw, 1.04rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+  margin-bottom: clamp(18px, 2.8vh, 28px);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: genericFadeIn 0.8s var(--ease-cinematic) 2.4s forwards;
+}
+
+/* --------------------------------------------------------------------------
+   10. Hold-to-Discover Easter Egg Overlay
+   -------------------------------------------------------------------------- */
+.hold-egg-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 25;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-smooth);
+}
+
+.hold-egg-container.egg-active {
+  opacity: 1;
+}
+
+.hold-egg-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(5, 6, 8, 0.92);
+  padding: 18px 32px;
+  border-radius: 9999px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.15);
+}
+
+.hold-line {
+  font-family: var(--font-mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hold-line.line-a {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hold-line.line-b {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   11. STAY CONNECTED CTA & Light Trail
+   -------------------------------------------------------------------------- */
+.cta-wrapper {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: genericFadeIn 0.8s var(--ease-cinematic) 2.5s forwards;
+}
+
+.stay-connected-btn {
+  appearance: none;
+  position: relative;
+  background: var(--surface-glass);
+  color: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  padding: 12px 30px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.3s var(--ease-cinematic), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.btn-light-trail {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.35), transparent);
+  opacity: 0;
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+.btn-light-trail.trail-active {
+  animation: trailSweepOnce 0.85s cubic-bezier(0.2, 1, 0.4, 1) forwards;
+}
+
+@keyframes trailSweepOnce {
+  0% { transform: translateX(-100%); opacity: 0.9; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+.stay-connected-btn:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    0 0 16px rgba(56, 189, 248, 0.08);
+}
+
+.stay-connected-btn:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 3px;
+}
+
+.btn-label-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: opacity 0.3s ease, transform 0.3s var(--ease-cinematic);
+}
+
+.btn-arrow {
+  display: inline-block;
+  font-size: 0.92rem;
+  line-height: 1;
+  color: var(--accent-blue);
+  transition: transform 0.3s var(--ease-cinematic);
+}
+
+.stay-connected-btn:hover .btn-arrow {
+  transform: translateX(6px);
+}
+
+.morph-label {
+  display: none;
+  color: #f8fafc;
+}
+
+.btn-check {
+  color: var(--accent-emerald);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* Click Morph: CONNECTED ✓ */
+.stay-connected-btn.morphed {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.08);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+  transform: scale(0.96);
+}
+
+.stay-connected-btn.morphed .default-label {
+  display: none;
+}
+
+.stay-connected-btn.morphed .morph-label {
+  display: inline-flex;
+  animation: morphPop 0.35s var(--ease-cinematic);
+}
+
+@keyframes morphPop {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* --------------------------------------------------------------------------
+   12. Architectural Footer Mask Reveal
+   -------------------------------------------------------------------------- */
+.site-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: var(--font-mono);
+  padding-bottom: 4px;
+  user-select: none;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: genericFadeIn 0.8s var(--ease-cinematic) 2.6s forwards;
+}
+
+.footer-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.sig-top {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+}
+
+.sig-bottom-wrap {
+  overflow: hidden;
+}
+
+.sig-bottom {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #f1f5f9;
+  text-transform: uppercase;
+  transform: translateY(100%);
+  animation: sigReveal 0.9s var(--ease-cinematic) 2.8s forwards;
+}
+
+@keyframes sigReveal {
+  to { transform: translateY(0); }
+}
+
+@keyframes genericFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   13. Calm Quiet Moments
+   -------------------------------------------------------------------------- */
+body.quiet-moment .ambient-orb {
+  animation-play-state: paused !important;
+}
+
+/* --------------------------------------------------------------------------
+   14. Responsive Adaptations
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  html, body {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .page-shell {
+    height: auto;
+    min-height: 100dvh;
+    max-height: none;
+    padding: 20px 18px;
+  }
+
+  .brand-logo {
+    height: 25px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.1rem, 9.5vw, 3rem);
+  }
+
+  .hero-supporting-copy {
+    font-size: 0.98rem;
+  }
+
+  .kinetic-status-text {
+    font-size: 0.84rem;
+  }
+
+  .hero-container {
+    padding: 24px 0 28px;
+  }
+
+  .typographic-constellation {
+    display: block;
+  }
+
+  .word-possibility { transform: translate(-50%, calc(-50% - 150px)); font-size: 0.68rem; }
+  .word-skills      { transform: translate(calc(-50% - 130px), calc(-50% - 60px)); font-size: 0.68rem; }
+  .word-growth      { transform: translate(calc(-50% + 130px), calc(-50% - 55px)); font-size: 0.68rem; }
+  .word-projects    { transform: translate(calc(-50% - 120px), calc(-50% + 80px)); font-size: 0.68rem; }
+  .word-opportunity { transform: translate(calc(-50% + 120px), calc(-50% + 85px)); font-size: 0.68rem; }
+  .word-connection  { transform: translate(-50%, calc(-50% + 160px)); font-size: 0.68rem; }
+}
+
+@media (max-height: 620px) and (min-width: 641px) {
+  html, body {
+    overflow-y: auto;
+  }
+  .page-shell {
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   15. Reduced Motion Compliance
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .site-header,
+  .hero-eyebrow,
+  .hero-brand-title,
+  .char-span,
+  .support-line,
+  .kinetic-status-container,
+  .hero-secondary-line,
+  .cta-wrapper,
+  .site-footer,
+  .sig-bottom {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .orb-1, .orb-2, .orb-3,
+  .cinematic-scan-beam,
+  .btn-light-trail,
+  .status-particle-canvas {
+    animation: none !important;
+    display: none !important;
+  }
+}
